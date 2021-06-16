@@ -39,6 +39,6 @@ class CoBrokerageSearchResponse
         $raw_results = $this->response->json();
         $rows = $raw_results['data']['numResults'] ?? 0;
 
-        return ceil($rows / $this->api->limit());
+        return ceil($rows / $this->api->getLimit());
     }
 }
