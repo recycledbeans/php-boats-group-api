@@ -1,0 +1,22 @@
+{
+    "name": "recycledbeans/php-boats-group",
+    "description": "A PHP library for interacting with the Boats Group Co-Brokerage API",
+    "type": "library",
+    "require": {
+        "kitetail/zttp": "^0.6.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    },
+    "authors": [
+        {
+            "name": "Matt Watson",
+            "email": "matt@recycledbeans.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "BoatsAPI\\": "src/"
+        }
+    }
+}
