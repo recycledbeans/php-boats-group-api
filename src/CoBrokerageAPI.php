@@ -60,6 +60,6 @@ class CoBrokerageAPI
         $params = $this->filters;
         $params['fields'] = implode(',', $this->fields);
 
-        return $this->get('search', $this->filters);
+        return $this->get('search', $params);
     }
 }
