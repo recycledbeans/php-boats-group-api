@@ -71,6 +71,11 @@ class CoBrokerageAPI
         return $this;
     }
 
+    public function getLimit()
+    {
+        return $this->limit;
+    }
+
     public function page(int $page)
     {
         $this->offset = ($page * $this->limit) - $this->limit;
