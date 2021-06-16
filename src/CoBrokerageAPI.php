@@ -58,7 +58,7 @@ class CoBrokerageAPI
     public function search()
     {
         $params = $this->filters;
-        $params['fields'] = $this->fields;
+        $params['fields'] = implode(',', $this->fields);
 
         return $this->get('search', $this->filters);
     }
