@@ -84,6 +84,6 @@ class CoBrokerageAPI
         $params['fields'] = implode(',', $this->fields);
         $params['offset'] = $this->offset;
 
-        return $this->get('search', $params)->json();
+        return new CoBrokerageSearchResponse($this->get('search', $params));
     }
 }
