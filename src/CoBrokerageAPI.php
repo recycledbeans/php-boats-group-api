@@ -74,6 +74,8 @@ class CoBrokerageAPI
     public function page(int $page)
     {
         $this->offset = ($page * $this->limit) - $this->limit;
+
+        return $this;
     }
 
     public function search()
