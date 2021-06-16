@@ -10,6 +10,8 @@ class CoBrokerageAPI
     protected $key;
     protected $filters = [];
     protected $fields = [];
+    protected $offset = 0;
+    protected $limit = 20;
 
     public function __construct($key = null)
     {
@@ -55,10 +57,30 @@ class CoBrokerageAPI
         return $this;
     }
 
+    public function offset($offset)
+    {
+        $this->offset = $offset;
+
+        return $this;
+    }
+
+    public function limit($limit = 20)
+    {
+        $this->limit = $limit;
+
+        return $this;
+    }
+
+    public function page(int $page)
+    {
+        $this->offset = ($page * $this->limit) - $this->limit;
+    }
+
     public function search()
     {
         $params = $this->filters;
         $params['fields'] = implode(',', $this->fields);
+        $params['offset'] = $this->offset;
 
         return $this->get('search', $params)->json();
     }
