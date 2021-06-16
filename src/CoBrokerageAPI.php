@@ -33,8 +33,33 @@ class CoBrokerageAPI
         return $this->get('details', ['id' => $id])->json();
     }
 
+    public function fields($fields = [])
+    {
+        if (empty($fields)) {
+            return $this->fields;
+        }
+
+        $this->fields = $fields;
+
+        return $this;
+    }
+
+    public function filters($filters = [])
+    {
+        if (empty($filters)) {
+            return $this->filters;
+        }
+
+        $this->filters = $filters;
+
+        return $this;
+    }
+
     public function search()
     {
+        $params = $this->filters;
+        $params['fields'] = $this->fields;
+
         return $this->get('search', $this->filters);
     }
 }
