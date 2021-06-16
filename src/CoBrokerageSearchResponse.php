@@ -17,13 +17,13 @@ class CoBrokerageSearchResponse
 
     public function data()
     {
-        return $this->response->json()['data']['results'];
+        return $this->rawData()['data']['results'];
     }
 
     public function isSuccess()
     {
         try {
-            return $this->response->isOk() && $this->response->json()['status'] === 'success';
+            return $this->response->isOk() && $this->rawData()['status'] === 'success';
         }
         catch (\Exception $exception) {
             return false;
@@ -36,9 +36,19 @@ class CoBrokerageSearchResponse
             return 0;
         }
 
-        $raw_results = $this->response->json();
+        $raw_results = $this->rawData();
         $rows = $raw_results['data']['numResults'] ?? 0;
 
         return ceil($rows / $this->api->getLimit());
+    }
+
+    public function rawData()
+    {
+        return $this->response->json();
+    }
+
+    public function totalResults()
+    {
+        return $this->rawData()['data']['numResults'];
     }
 }
