@@ -27,4 +27,13 @@ class Boat
 
         return new Collection($images);
     }
+
+    public function __get($attribute)
+    {
+        if (isset($this->data[$attribute])) {
+            return $this->data[$attribute];
+        }
+
+        return null;
+    }
 }

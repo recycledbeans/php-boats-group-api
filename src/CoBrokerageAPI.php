@@ -32,7 +32,13 @@ class CoBrokerageAPI
 
     public function details($id)
     {
-        return $this->get('details', ['id' => $id])->json();
+        $json = $this->get('details', ['id' => $id])->json();
+
+        if (!isset($json['data'])) {
+            return null;
+        }
+
+        return new Boat($json['data']);
     }
 
     public function fields($fields = [])
