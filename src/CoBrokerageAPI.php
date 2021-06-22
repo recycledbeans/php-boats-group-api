@@ -94,6 +94,7 @@ class CoBrokerageAPI
         $params = $this->filters;
         $params['fields'] = implode(',', $this->fields);
         $params['offset'] = $this->offset;
+        $params['rows'] = $this->limit;
 
         return new CoBrokerageSearchResponse($this->get('search', $params), $this);
     }
