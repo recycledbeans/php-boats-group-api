@@ -2,6 +2,7 @@
 
 namespace BoatsAPI;
 
+use Illuminate\Support\Collection;
 use Zttp\ZttpResponse;
 
 class CoBrokerageSearchResponse
@@ -17,7 +18,7 @@ class CoBrokerageSearchResponse
 
     public function data()
     {
-        return $this->rawData()['data']['results'];
+        return new Collection($this->rawData()['data']['results']);
     }
 
     public function isSuccess()
