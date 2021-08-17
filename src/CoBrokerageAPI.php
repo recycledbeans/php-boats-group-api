@@ -15,8 +15,12 @@ class CoBrokerageAPI
 
     public function __construct($key = null)
     {
-        if (!$key) {
+        if (!$key && getenv('BOATS_CO_BROKERAGE_API_KEY')) {
             $key = getenv('BOATS_CO_BROKERAGE_API_KEY');
+        }
+
+        if (!$key && defined('BOATS_CO_BROKERAGE_API_KEY')) {
+            $key = BOATS_CO_BROKERAGE_API_KEY;
         }
 
         $this->key = $key;
